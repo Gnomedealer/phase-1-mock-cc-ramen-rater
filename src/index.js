@@ -7,17 +7,19 @@ function getRamen(){
     fetch('http://localhost:3000/ramens')
          .then(data => data.json())
          .then(ramen => renderRamen(ramen))
-    const form = document.getElementById("new-ramen-btn")
-    form.addEventListener('click', (event) => {
-        event.preventDefault()
-        const objRamen = {}
-        objRamen.name = document.getElementById('new-name').value
-        objRamen.restaurant = document.getElementById('new-restaurant').value
-        objRamen.image = document.getElementById('new-image').value
-        objRamen.rating = document.getElementById('new-rating').value
-        objRamen.comment = document.getElementById('new-comment').value
 
-        console.log([objRamen])
+    const form = document.getElementById("new-ramen")
+    form.addEventListener('submit', (event) => {
+        event.preventDefault()
+        const newArray = Array.from(form)
+        const objRamen = {}
+
+        objRamen.name = newArray[0].value
+        objRamen.restaurant = newArray[1].value
+        objRamen.image = newArray[2].value
+        objRamen.rating = newArray[3].value
+        objRamen.comment = newArray[4].value
+        
         renderRamen([objRamen])
         
     })
@@ -43,21 +45,34 @@ const renderRamen = (data) => {
             const bigComment = document.querySelector("#comment-display")
             bigComment.innerHTML = bowlRamen.comment
         
-            
-
-        })
-        
+        })    
         
     })
     menuRamen.append()
-
     
 }
 
 getRamen()
 
-// name restaurant rating-display comment-display
+        
 
+
+
+
+
+
+
+
+
+
+
+
+        // name restaurant rating-display comment-display
+        // objRamen.name = document.getElementById('new-name').value
+        // objRamen.restaurant = document.getElementById('new-restaurant').value
+        // objRamen.image = document.getElementById('new-image').value
+        // objRamen.rating = document.getElementById('new-rating').value
+        // objRamen.comment = document.getElementById('new-comment').value
 
 
 
